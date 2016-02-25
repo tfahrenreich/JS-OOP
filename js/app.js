@@ -30,7 +30,8 @@ var Freeway = Freeway || {};
             }
         },
         get intro(){
-            return "I am "+this.getName()+ ", a "+this.type+" with "+this.wheels+" wheels, and "+this.seats+" seats!";
+            this.introCache = this.introCache || "I am "+this.getName()+ ", a "+this.type+" with "+this.wheels+" wheels, and "+this.seats+" seats!";
+            return this.introCache;
         },
         types : {
             "Motorcycle":{
@@ -79,7 +80,7 @@ var Freeway = Freeway || {};
             console.log('That vehicle already exists.')
         }else{
             Vehicle.prototype.types[type].create(name);
-            var appendix = $("<li></li>").data('object', Freeway[name]).html(name).addClass('list-item');
+            var appendix = $("<li></li>").data('object', Freeway[name]).html(name).append(' - <button type="button">info</button>');
             $("#list").append(appendix);
         }
     });
