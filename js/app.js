@@ -24,6 +24,7 @@ var Freeway = Freeway || {};
                 this.type = string;
                 this.wheels = type.wheels;
                 this.seats = type.seats;
+                console.log(this.getName()+" is now a "+this.type);
             }else{
                 console.log('Class doesn\'t exist');
                 return false;
